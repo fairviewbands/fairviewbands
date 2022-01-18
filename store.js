@@ -1,4 +1,4 @@
-const WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbzH-nbQOTy5n1KMkzCxv5M3inJLucGhRkLNVinPRi_4oy8RV1_ddKQ83OUspG6RjpP_WA/exec';
+const DEFAULT_DEPLOYMENT_ID = 'AKfycbzH-nbQOTy5n1KMkzCxv5M3inJLucGhRkLNVinPRi_4oy8RV1_ddKQ83OUspG6RjpP_WA';
 const DEFAULT_SALE = 'fruit2022test';
 
 function load() {
@@ -8,26 +8,45 @@ function load() {
   };
 
   const queryMatch = window.location.href.match(/\?(.*)/);
+  let deploymentId = DEFAULT_DEPLOYMENT_ID;
+  let dev = false;
 
   if (queryMatch) {
     queryMatch[1].split('&').forEach(nameValue => {
       const nameMatch = nameValue.match(/([^=]+)/);
       const valueMatch = nameValue.match(/=(.*)/);
 
-      if (nameMatch && valueMatch && valueMatch[1] && valueMatch[1].length < 20) {
+      if (nameMatch && valueMatch && valueMatch[1] && valueMatch[1].length < 100) {
         const name = nameMatch[1];
+        const value = valueMatch[1];
         switch (name) {
           case 'sale':
           case 'action':
           case 'order':
-            params[name] = valueMatch[1];
+            params[name] = value;
+            break;
+          case 'deplid':
+            deploymentId = value;
+            break;
+          case 'dev':
+            dev = (value == 'true');
+            break;
         }
       }
     });
   }
 
   const query = Object.entries(params).map(kv => `${kv[0]}=${kv[1]}`).join('&');
-  const url = `${WEBAPP_URL}?${query}`
+
+  if (!deploymentId.match(/^[A-Za-z0-9_-]+$/)) {
+    console.error('Invalid deployment ID');
+    return;
+  }
+  if (dev && deploymentId === DEFAULT_DEPLOYMENT_ID) {
+    console.error('Deployment ID required');
+    return;
+  }
+  const url = `https://script.google.com/a/macros/fairviewbands.org/s/${deploymentId}/${dev ? 'dev' : 'exec'}?${query}`;
 
   switch (params.action) {
     case 'start':
