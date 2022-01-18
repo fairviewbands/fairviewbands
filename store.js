@@ -9,7 +9,6 @@ function load() {
 
   const queryMatch = window.location.href.match(/\?(.*)/);
   let deploymentId = DEFAULT_DEPLOYMENT_ID;
-  let dev = false;
 
   if (queryMatch) {
     queryMatch[1].split('&').forEach(nameValue => {
@@ -28,9 +27,6 @@ function load() {
           case 'deplid':
             deploymentId = value;
             break;
-          case 'dev':
-            dev = (value == 'true');
-            break;
         }
       }
     });
@@ -42,11 +38,7 @@ function load() {
     console.error('Invalid deployment ID');
     return;
   }
-  if (dev && deploymentId === DEFAULT_DEPLOYMENT_ID) {
-    console.error('Deployment ID required');
-    return;
-  }
-  const url = `https://script.google.com/a/macros/fairviewbands.org/s/${deploymentId}/${dev ? 'dev' : 'exec'}?${query}`;
+  const url = `https://script.google.com/a/macros/fairviewbands.org/s/${deploymentId}/exec?${query}`;
 
   switch (params.action) {
     case 'start':
