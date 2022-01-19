@@ -1,4 +1,3 @@
-const DEFAULT_DEPLOYMENT_ID = 'AKfycbzH-nbQOTy5n1KMkzCxv5M3inJLucGhRkLNVinPRi_4oy8RV1_ddKQ83OUspG6RjpP_WA';
 const DEFAULT_SALE = 'fruit2022test';
 
 function load() {
@@ -8,7 +7,7 @@ function load() {
   };
 
   const queryMatch = window.location.href.match(/\?(.*)/);
-  let deploymentId = DEFAULT_DEPLOYMENT_ID;
+  let deploymentId = DEPLOYMENT_ID;  // from deployment.js
 
   if (queryMatch) {
     queryMatch[1].split('&').forEach(nameValue => {
