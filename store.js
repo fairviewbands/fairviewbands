@@ -1,11 +1,5 @@
-const DEFAULT_SALE = 'fruit2022test';
-
 function load() {
-  const params = {
-    sale: DEFAULT_SALE,
-    action: 'start',
-  };
-
+  const params = {};
   const queryMatch = window.location.href.match(/\?(.*)/);
   let deploymentId = DEPLOYMENT_ID;  // from deployment.js
 
