@@ -1,22 +1,53 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Fairview Band Store</title>
-    <link rel="icon" type="image/png" href="images/favicon.png">
-    <style>
-      body {
-        margin: 0;
+function load() {
+  const params = {};
+  const queryMatch = window.location.href.match(/\?(.*)/);
+  let deploymentId = DEPLOYMENT_ID;  // from deployment.js
+
+  if (queryMatch) {
+    queryMatch[1].split('&').forEach(nameValue => {
+      const nameMatch = nameValue.match(/([^=]+)/);
+      const valueMatch = nameValue.match(/=(.*)/);
+
+      if (nameMatch && valueMatch && valueMatch[1] && valueMatch[1].length < 100) {
+        const name = nameMatch[1];
+        const value = valueMatch[1];
+        switch (name) {
+          case 'sale':
+          case 'action':
+          case 'order':
+            params[name] = value;
+            break;
+          case 'deplid':
+            deploymentId = value;
+            break;
+        }
       }
-      iframe {
-        width: 100%;
-        height: 99vh; /* not 100 to avoid a double scroll bar */
-        border: 0;
-      }
-    </style>
-    <script src="deployment.js"></script>
-    <script src="store.js"></script>
-  </head>
-  <body onload="load()">
-  </body>
-</html>
+    });
+  }
+
+  const query = Object.entries(params).map(kv => `${kv[0]}=${kv[1]}`).join('&');
+
+  if (!deploymentId.match(/^[A-Za-z0-9_-]+$/)) {
+    console.error('Invalid deployment ID');
+    return;
+  }
+  const url = `https://script.google.com/a/macros/fairviewbands.org/s/${deploymentId}/exec?${query}`;
+
+  if (params.sale === 'donate') {
+    document.title = `${document.title} - Donate`;
+  } else {
+    const action = params.action ? params.action : 'start';
+    switch (action) {
+      case 'start':
+        document.title = `${document.title} - Create Order`;
+        break;
+      case 'status':
+        document.title = `${document.title} - Order Status (${params.order})`;
+        break;
+    }
+  }
+
+  const iframe = document.createElement('iframe');
+  iframe.src = url;
+  document.body.appendChild(iframe);
+}
