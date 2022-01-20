@@ -1,1 +1,3 @@
-const DEPLOYMENT_ID = 'AKfycbxENp3J_VS_2eGy0B3Zyg2Tr7xOIdOp9kR296TGeaSacridavWKTBQpwswy0ZV4DuPZKg';
+const DEPLOYMENT_ID = `
+AKfycby8mO_BTNQEMNlzFt_-uYKseNe6E7tjN-ifZsc2FXLpuFdvcK0kpYr_a9e0FMwWbPSNmQ
+`.trim();
