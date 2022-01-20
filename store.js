@@ -33,13 +33,18 @@ function load() {
   }
   const url = `https://script.google.com/a/macros/fairviewbands.org/s/${deploymentId}/exec?${query}`;
 
-  switch (params.action) {
-    case 'start':
-      document.title = `${document.title} - Create Order`;
-      break;
-    case 'status':
-      document.title = `${document.title} - Order Status (${params.order})`;
-      break;
+  if (params.sale === 'donate') {
+    document.title = `${document.title} - Donate`;
+  } else {
+    const action = params.action ? params.action : 'start';
+    switch (action) {
+      case 'start':
+        document.title = `${document.title} - Create Order`;
+        break;
+      case 'status':
+        document.title = `${document.title} - Order Status (${params.order})`;
+        break;
+    }
   }
 
   const iframe = document.createElement('iframe');
