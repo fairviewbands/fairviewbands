@@ -48,6 +48,18 @@ function load() {
   }
 
   const iframe = document.createElement('iframe');
+  let wasLoaded = false;
   iframe.src = url;
+  iframe.onload = function() {
+    document.getElementById('loading').innerHTML = '';
+    wasLoaded = true;
+  };
+  window.setTimeout(() => {
+    if (!wasLoaded) {
+      document.getElementById('loading-message').innerHTML = '';
+      document.getElementById('direct-link').href = url;
+      document.getElementById('too-long').style.display = 'block';
+    }
+  }, 5000);
   document.body.appendChild(iframe);
 }
