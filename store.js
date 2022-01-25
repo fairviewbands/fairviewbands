@@ -1,7 +1,8 @@
-function load() {
-  const params = {};
+function load(params) {
   const queryMatch = window.location.href.match(/\?(.*)/);
   let deploymentId = DEPLOYMENT_ID;  // from deployment.js
+
+  // Propagate a few parameters.
 
   if (queryMatch) {
     queryMatch[1].split('&').forEach(nameValue => {
@@ -12,8 +13,8 @@ function load() {
         const name = nameMatch[1];
         const value = valueMatch[1];
         switch (name) {
-          case 'sale':
           case 'action':
+          case 'sale':
           case 'order':
             params[name] = value;
             break;
@@ -31,21 +32,8 @@ function load() {
     console.error('Invalid deployment ID');
     return;
   }
-  const url = `https://script.google.com/a/macros/fairviewbands.org/s/${deploymentId}/exec?${query}`;
-
-  if (params.sale === 'donate') {
-    document.title = `${document.title} - Donate`;
-  } else {
-    const action = params.action ? params.action : 'start';
-    switch (action) {
-      case 'start':
-        document.title = `${document.title} - Create Order`;
-        break;
-      case 'status':
-        document.title = `${document.title} - Order Status (${params.order})`;
-        break;
-    }
-  }
+  const url =
+      `https://script.google.com/a/macros/fairviewbands.org/s/${deploymentId}/exec?${query}`;
 
   const iframe = document.createElement('iframe');
   let wasLoaded = false;
