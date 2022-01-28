@@ -18,9 +18,6 @@ function load(params) {
           case 'order':
             params[name] = value;
             break;
-          case 'deplid':
-            deploymentId = value;
-            break;
         }
       }
     });
