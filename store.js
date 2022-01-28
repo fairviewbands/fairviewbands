@@ -1,3 +1,5 @@
+const TOO_LONG_LOAD_SECS = 10;
+
 function load(params) {
   const queryMatch = window.location.href.match(/\?(.*)/);
   let deploymentId = DEPLOYMENT_ID;  // from deployment.js
@@ -45,6 +47,6 @@ function load(params) {
       document.getElementById('direct-link').href = url;
       document.getElementById('too-long').style.display = 'block';
     }
-  }, 5000);
+  }, TOO_LONG_LOAD_SECS * 1000);
   document.body.appendChild(iframe);
 }
