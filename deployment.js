@@ -1,3 +1,3 @@
 const DEPLOYMENT_ID = `
-AKfycbwIUYGB1bKgyRE-iIZ3UOr4whDmP1Zh0hfzJ4LDDHnLrNig7_VJY3uebuAj2_Hz0XMXuQ
+https://script.google.com/macros/s/AKfycbxlMCU4ukiMmQC6qwpCjhS3vvXA1hZ9pZ76pmObvRJnGBiNvYC_BdPp4xqKlmBZVi2Lgg/exec
 `.trim();
