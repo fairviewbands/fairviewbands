@@ -18,6 +18,8 @@ function load(params) {
           case 'action':
           case 'sale':
           case 'order':
+          case 'student':
+          case 'day':
             params[name] = value;
             break;
         }
