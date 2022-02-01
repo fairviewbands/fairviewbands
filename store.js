@@ -51,4 +51,5 @@ function load(params) {
     }
   }, TOO_LONG_LOAD_SECS * 1000);
   document.body.appendChild(iframe);
+  iframe.focus();
 }
