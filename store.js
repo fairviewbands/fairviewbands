@@ -45,7 +45,6 @@ function load(params) {
   };
   window.setTimeout(() => {
     if (!wasLoaded) {
-      document.getElementById('loading-message').innerHTML = '';
       document.getElementById('direct-link').href = url;
       document.getElementById('too-long').style.display = 'block';
     }
