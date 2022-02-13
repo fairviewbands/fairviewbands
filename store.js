@@ -40,7 +40,7 @@ function load(params) {
   let wasLoaded = false;
   iframe.src = url;
   iframe.onload = function() {
-    document.getElementById('loading').innerHTML = '';
+    document.getElementById('loading').outerHTML = '';
     wasLoaded = true;
   };
   window.setTimeout(() => {
