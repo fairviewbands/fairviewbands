@@ -16,10 +16,11 @@ function load(params) {
         const value = valueMatch[1];
         switch (name) {
           case 'action':
-          case 'sale':
-          case 'order':
-          case 'student':
           case 'day':
+          case 'order':
+          case 'sale':
+          case 'student':
+          case 'token':
             params[name] = value;
             break;
         }
