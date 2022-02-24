@@ -25,11 +25,35 @@
         margin-left: 30px;
         margin-top: 10px;
       }
+
+      @media screen and (max-width: 490px) {
+        .header {
+          margin-left: 10px;
+        }
+      }
+
+      @media screen and (max-width: 700px) {
+        .title {
+          font-size: 20px;
+          margin-left: 10px;
+          top: 58px;
+        }
+      }
+
+      @media screen and (max-width: 400px) {
+        #logo-image {
+          width: 100px;
+        }
+
+        .title {
+          top: 40px;
+        }
+      }
     </style>
   </head>
   <body>
     <div class="header">
-      <img src="images/FMK_Logo.png" alt="FMK logo">
+      <img id="logo-image" src="images/FMK_Logo.png" alt="FMK logo">
       <span class="title">Fairview Band Store</span>
     </div>
     <hr>
