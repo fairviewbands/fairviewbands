@@ -19,6 +19,7 @@ function load(params) {
           case 'day':
           case 'order':
           case 'sale':
+          case 'source':
           case 'student':
           case 'token':
             params[name] = value;
