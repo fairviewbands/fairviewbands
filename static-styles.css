@@ -1,0 +1,50 @@
+body {
+  font-family: sans-serif;
+  font-size: 18px;
+}
+
+.title {
+  display: inline;
+  vertical-align: top;
+  position: relative;
+  top: 40px;
+  margin-left: 25px;
+  font-size: 48px;
+  font-weight: bold;
+  color: #951313;     
+}
+
+.header {
+  margin-left: 30px;
+  margin-top: 10px;
+}
+
+.main {
+  margin-left: 30px;
+  width: 85%;
+  max-width: 680px;
+}
+
+@media screen and (max-width: 490px) {
+  .header {
+    margin-left: 10px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .title {
+    font-size: 20px;
+    margin-left: 10px;
+    top: 58px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  #logo-image {
+    width: 100px;
+  }
+
+  .title {
+    top: 40px;
+  }
+}
