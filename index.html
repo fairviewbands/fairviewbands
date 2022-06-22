@@ -5,8 +5,16 @@
     <title>Fairview Band Store</title>
     <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="stylesheet" href="static-styles.css">
+    <script type="text/javascript">
+      function load() {
+        const match = window.location.href.match(/[?&]source=([^&]+)/);
+        if (match) {
+          document.getElementById('start-link').href = `start/?source=${match[1]}`;
+        }
+      }
+    </script>
   </head>
-  <body>
+  <body onload="load()">
     <div class="header">
       <img id="logo-image" src="images/FMK_Logo.png" alt="FMK logo">
       <span class="title">Fairview Band Store</span>
@@ -16,7 +24,7 @@
     <div class="main">
       <br>
       Welcome! You're probably looking for the peach sale. If so, click
-      <a href="start/"> here</a>.
+      <a id="start-link" href="start/"> here</a>.
       <!-- peaches --> &#127825;&#127825;&#127825;
     </div>
   </body>
