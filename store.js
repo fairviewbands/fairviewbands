@@ -1,4 +1,4 @@
-const TOO_LONG_LOAD_SECS = 10;
+const TOO_LONG_LOAD_SECS = 15;
 
 function load(params) {
   const queryMatch = window.location.href.match(/\?(.*)/);
