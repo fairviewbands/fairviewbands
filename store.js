@@ -22,6 +22,7 @@ function load(params) {
           case 'source':
           case 'student':
           case 'token':
+          case 'waitlist':
             params[name] = value;
             break;
         }
