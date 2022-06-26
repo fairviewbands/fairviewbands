@@ -9,7 +9,9 @@
       function load() {
         const match = window.location.href.match(/[?&]source=([^&]+)/);
         if (match) {
-          document.getElementById('start-link').href = `start/?source=${match[1]}`;
+          const source = encodeURIComponent(match[1]);
+          document.getElementById('start-link').href = `start/?source=${source}`;
+          document.getElementById('donate-link').href = `start/?source=${source}`;
         }
       }
     </script>
@@ -24,8 +26,12 @@
     <div class="main">
       <br>
       Welcome! You're probably looking for the peach sale. If so, click
-      <a id="start-link" href="start/"> here</a>.
+      <a id="start-link" href="start/">here</a>.
       <!-- peaches --> &#127825;&#127825;&#127825;
+      
+      <br><br>
+      If you'd like to make a donation to the General Band Fund, please click
+      <a id="donate-link" href="donate/">here</a>.
     </div>
   </body>
 </html>
