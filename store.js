@@ -18,6 +18,7 @@ function load(params) {
           case 'action':
           case 'day':
           case 'order':
+          case 'preview':
           case 'sale':
           case 'source':
           case 'student':
