@@ -1,3 +1,3 @@
 const DEPLOYMENT_ID = `
-AKfycbxGY0SHbt3P0O52EMgrC1Mdflpbbcn2NyPvu6-Jvtz5DT28sJeYqP80Ka8gvWU3meGlcQ
+AKfycbwgifu178UgVL36IMHpO3sBILIVTW19sFdo6r7ZDQqih80r2oNlXgiz6kKiSVj7x7YiLA
 `.trim();
